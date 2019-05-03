@@ -1,0 +1,140 @@
+#{extends 'main.html' /}
+#{set title:'Dashboard' /}
+#{menutrainer id:"dashboardtrainer"/}
+
+
+
+
+<section class="ui raised segment">
+    <div class="ui four column center aligned grid">
+
+
+
+            <div class="column">
+
+
+            <i class="huge user circle icon"></i>
+
+            <header class="ui header">
+            ${member.firstname} ${member.lastname}
+            </header>
+        </div>
+
+
+
+            <div class="column">
+
+
+           #{if member.isIdealBodyWeight}
+             <i class="huge green dashboard icon"></i>
+           #{/if}
+           #{if !member.isIdealBodyWeight}
+             <i class="huge red dashboard icon"></i>
+           #{/if}
+
+                 <header class="ui header">
+
+                 Members Ideal Weight  </br>
+
+                 </header>
+
+               </div>
+
+                <div class="column">
+
+            <i class=" huge heartbeat icon"></i>
+            <header class="ui header">
+            ${member.bmi} </br>BMI
+            </header>
+        </div>
+
+
+                        <div class="column">
+
+            <i class=" huge user md icon"></i>
+
+            <header class="ui header">
+            ${member.bmiCategory} </br>BMI Category
+            </header>
+        </div>
+    </div>
+
+
+
+</section>
+
+
+
+
+
+
+<section class="ui raised segment">
+    <header class="ui header">
+        Assessment
+    </header>
+    <table class="ui celled table">
+
+
+    #{list items:assessmentList, as:'assessment'}
+    <thead>
+            <tr><th>Weight</th>
+                <th>Chest</th>
+                <th>Thigh</th>
+                <th>Upper Arm</th>
+                <th>Waist</th>
+                <th>Hips</th>
+                <th>Comment</th>
+
+            </tr>
+
+            </thead>
+        <tr>
+
+            <td><div class="ui item"> ${assessment.weight} </div></td>
+            <td><div class="ui item"> ${assessment.chest} </div></td>
+            <td><div class="ui item"> ${assessment.thigh} </div></td>
+            <td><div class="ui item"> ${assessment.upperArm} </div></td>
+            <td><div class="ui item"> ${assessment.waist} </div></td>
+            <td><div class="ui item"> ${assessment.hips} </div></td>
+            <td><div class="ui item"> ${assessment.trainerComment} </div></td>
+            <td></td>
+
+
+        </tr>
+    <tr>
+
+        <td colspan="8">
+
+        <form class="ui stacked segment form" action="/dashboardtrainer/addassessmentcomment/${assessment.id}${member.id}" method="POST">
+<table>
+
+
+
+    <tr>
+        <td colspan="8"> <label>Comments</label></td>
+    </tr>
+
+        <tr>
+            <td colspan="8"> <div class="field">
+                <input name="comments">
+            </div></td>
+        </tr>
+        <tr>
+            <td colspan="8"> <button class="ui blue submit button">Update</button></td>
+        </tr>
+
+</table>
+
+        </form>
+        </td>
+    </tr>
+
+    #{/list}
+
+    </table>
+
+</section>
+
+
+
+

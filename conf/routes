@@ -1,0 +1,46 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                                             Start.index
+
+GET    /signup                                                        Accounts.signup
+GET    /login                                                         Accounts.login
+
+POST   /register                                                      Accounts.register
+POST   /authenticate                                                  Accounts.authenticate
+
+GET    /logout                                                        Accounts.logout
+
+GET    /editmember                                                   EditMember.index
+
+POST  /updatememberdetails                                           Accounts.updateMemberDetails
+
+
+POST    /dashboard/addassessment                                      Dashboard.addAssessment
+POST    /dashboardtrainer/addassessmentcomment/{assessmentid}{id}     DashboardTrainer.addAssessmentComment
+GET     /dashboardtrainer/deleteassessment/{assessmentid}             DashboardTrainer.deleteAssessment
+GET     /dashboard/deleteassessment/{assessmentid}                    Dashboard.deleteAssessment
+
+
+
+
+GET     /dashboard                                                    Dashboard.index
+GET     /dashboardtrainer/{id}                                        DashboardTrainer.index
+
+GET     /admin                                                        Admin.index
+GET     /about                                                        About.index
+
+POST    /assessments/{id}/addcomment                                   DashboardTrainer.addComment
+
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

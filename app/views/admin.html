@@ -1,0 +1,32 @@
+
+
+#{extends 'main.html' /}
+#{set title:'DashboardTrainer' /}
+
+#{menutrainer id:"admin"/}
+
+<section class="ui raised segment">
+    <header class="ui header">
+        Members
+    </header>
+    <table class="ui celled table">
+
+
+    #{list items:memberList, as:'member'}
+        <tr>
+
+            <td rowspan="2"><i class="github icon"></i> <a href="/dashboardtrainer/${member.id}"> ${member.firstname}  ${member.lastname} </a></br>${member.assessmentList.size()} Assessments </td>
+
+            <td></td>
+        </tr>
+
+
+
+    #{/list}
+
+    </table>
+
+</section>
+
+
+
