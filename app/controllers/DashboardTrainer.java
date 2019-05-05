@@ -28,9 +28,10 @@ public class DashboardTrainer extends Controller
         Assessment assessment = Assessment.findById(assessmentid);
         assessment.trainerComment = comments;
         assessment.save();
-     Member member = Member.findById(id);
-       List<Assessment> assessmentList =  member.assessmentList;
-       render("dashboardtrainer.html", assessmentList, member );
+        redirect ("/dashboardtrainer/" + id);
+//        Member member = Member.findById(id);
+//        List<Assessment> assessmentList =  member.assessmentList;
+//        render("dashboardtrainer.html", member, assessmentList );
 
     }
 
