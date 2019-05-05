@@ -30,7 +30,7 @@ public class DashboardTrainer extends Controller
         assessment.save();
      Member member = Member.findById(id);
        List<Assessment> assessmentList =  member.assessmentList;
-       render("dashboardtrainer.html",  member, assessmentList  );
+       render("dashboardtrainer.html", assessmentList, member );
 
     }
 
